@@ -94,5 +94,12 @@ namespace thirdApi.Business
 
             return atual;
         }
+
+        public Models.TbDiretor DeletarDiretor(Models.TbDiretor diretor)
+        {
+            diretor = diretorDb.DeletarDiretor(diretor);
+
+            return diretor;
+        }
     }
 }

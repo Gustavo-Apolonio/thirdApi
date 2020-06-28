@@ -57,6 +57,26 @@ namespace thirdApi.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<Models.Response.DiretorResponse> ConsultarDiretor(int id)
+        {
+            try
+            {
+                Models.TbDiretor consulta = diretorBusiness.ConsultarDiretor(id);
+
+                Models.Response.DiretorResponse resp = diretorConversor.ToResponseConversor(consulta);
+
+                return resp;
+            }
+            catch (System.Exception e)
+            {
+                return NotFound(
+                    new Models.Response.ErrorResponse(404, e.Message)
+                );
+            }
+        }
+
+
         [HttpPut("{id}")]
         public ActionResult<Models.Response.DiretorResponse> AlterarDiretor(int id, Models.Request.DiretorRequest req)
         {
@@ -80,6 +100,28 @@ namespace thirdApi.Controllers
                         new Models.Response.ErrorResponse(400, e.Message)
                     );
                 }
+            }
+            catch (System.Exception e)
+            {
+                return NotFound(
+                    new Models.Response.ErrorResponse(404, e.Message)
+                );
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<Models.Response.DiretorResponse> DeletarFilme(int id)
+        {
+            try
+            {
+                Models.TbDiretor diretor = diretorBusiness.ConsultarDiretor(id);
+
+                Models.Response.DiretorResponse resp = diretorConversor.ToResponseConversor(
+                    diretorBusiness.DeletarDiretor(diretor)
+                    );
+
+                return resp;
+
             }
             catch (System.Exception e)
             {

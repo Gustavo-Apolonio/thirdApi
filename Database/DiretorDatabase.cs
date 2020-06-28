@@ -49,5 +49,13 @@ namespace thirdApi.Database
             
             return atual;
         }
+
+        public Models.TbDiretor DeletarDiretor(Models.TbDiretor diretor)
+        {
+            ctx.Remove(diretor);
+            ctx.SaveChanges();
+
+            return diretor;
+        }
     }
 }
