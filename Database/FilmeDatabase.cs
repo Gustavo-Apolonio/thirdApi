@@ -1,3 +1,8 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace thirdApi.Database
 {
     public class FilmeDatabase
@@ -10,6 +15,13 @@ namespace thirdApi.Database
             ctx.SaveChanges();
 
             return filme;
+        }
+
+        public List<Models.TbFilme> ConsultarFilmes()
+        {
+            List<Models.TbFilme> filmes = ctx.TbFilme.ToList();
+
+            return filmes;
         }
     }
 }

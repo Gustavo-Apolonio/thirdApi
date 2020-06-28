@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace thirdApi.Business
 {
@@ -27,5 +30,15 @@ namespace thirdApi.Business
 
             return filme;
         } 
+
+        public List<Models.TbFilme> ConsultarFilmes()
+        {
+            List<Models.TbFilme> filmes = filmeDb.ConsultarFilmes();
+
+            if(filmes.Count == 0)
+                throw new ArgumentException("Não há filmes no Banco de Dados");
+
+            return filmes;
+        }
     }
 }
